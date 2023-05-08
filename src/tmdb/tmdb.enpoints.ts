@@ -1,4 +1,4 @@
-import { TMDB } from "../types/tmdb/tmdb";
+import { TMDB } from "../types/tmdb";
 import getUrl from "./tmdb.config";
 
 const tmdbEndpoints = {

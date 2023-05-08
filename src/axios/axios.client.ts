@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Movies } from "../types/movies";
 
-const get = async (url: string) => {
+export const get = async (url: string) => {
   try {
     const response = await axios.get<Movies>(url);
     return response.data;
