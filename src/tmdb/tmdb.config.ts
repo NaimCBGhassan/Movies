@@ -1,5 +1,5 @@
 import { TMDB_BASE_URL as baseUrl, TMDB_TOKEN as token } from "../env";
-import { TMDB } from "../types/tmdb";
+import { TMDB } from "../types/tmdb/movie";
 
 const getUrl = (endpoint: string, params?: Pick<TMDB, "page"> | Pick<TMDB, "query" | "page">) => {
   let qs: URLSearchParams | undefined;

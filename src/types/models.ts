@@ -1,4 +1,4 @@
-import { ObjectId } from "mongoose";
+import { Model, ObjectId } from "mongoose";
 
 //Users
 export interface User {
@@ -6,7 +6,16 @@ export interface User {
   displayName: string;
   password: string;
   salt: string;
+  id?: string;
 }
+
+export interface UserMethods {
+  setPassword: (password: string) => void;
+  validPassword: (password: string) => boolean;
+}
+
+// Create a new Model type that knows about IUserMethods...
+export type UserModel = Model<User, {}, UserMethods>;
 
 //Reviews
 export interface Review {

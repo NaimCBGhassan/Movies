@@ -1,9 +1,9 @@
 import axios from "axios";
-import { Movies } from "../types/movies";
+//AXIOS GET TMDB DATA
 
 export const get = async (url: string) => {
   try {
-    const response = await axios.get<Movies>(url);
+    const response = await axios.get(url);
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {

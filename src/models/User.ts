@@ -1,9 +1,9 @@
 import { Schema, model } from "mongoose";
 import modelOptions from "./modelOptions";
 import crypto from "crypto";
-import { User } from "../types/models";
+import { User, UserMethods, UserModel } from "../types/models";
 
-const UserSchema = new Schema<User>(
+const UserSchema = new Schema<User, UserModel, UserMethods>(
   {
     username: {
       type: String,
@@ -17,10 +17,12 @@ const UserSchema = new Schema<User>(
     password: {
       type: String,
       required: true,
+      select: false,
     },
     salt: {
       type: String,
       required: true,
+      select: false,
     },
   },
   modelOptions
@@ -37,5 +39,5 @@ UserSchema.methods.validPassword = function (password: string) {
   return this.password === hash;
 };
 
-const UserModel = model("User", UserSchema);
+const UserModel = model<User, UserModel>("User", UserSchema);
 export default UserModel;

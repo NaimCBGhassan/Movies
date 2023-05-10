@@ -1,3 +1,4 @@
+/***** GENERAL *****/
 export interface TMDB {
   personId: string;
   mediaId: string;

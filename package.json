@@ -3,6 +3,7 @@
   "description": "This is the server deployed will be deployed in Railway.",
   "version": "1.0.0",
   "main": "index.ts",
+  "types": "./src/types/custom.d.ts",
   "scripts": {
     "dev": "ts-node-dev --respawn --ignore-watch node_modules ./src/app.ts",
     "build": "tsc",
