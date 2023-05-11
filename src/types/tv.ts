@@ -1,3 +1,5 @@
+import { Review } from "./models";
+
 // FOR MEDIA TYPE AND TV RECOMENDATION
 export interface TvSeries {
   page: number;
@@ -56,6 +58,12 @@ export interface TvID {
   type: string;
   vote_average: number;
   vote_count: number;
+  credits?: TvIDCredits;
+  videos?: TvIDVideo;
+  recommend?: TvSerieResult[]; // This is different
+  images: TvIDImages;
+  isFavorite?: boolean;
+  reviews?: Review[];
 }
 
 interface Genre {
@@ -129,7 +137,7 @@ interface Cast {
 }
 
 //MEDIAID VIDEOS
-export interface TvIDCredits {
+export interface TvIDVideo {
   id: number;
   results: Result[];
 }
@@ -149,7 +157,7 @@ interface Result {
 
 // MOVIEID IMAGES
 
-export interface TvIDCredits {
+export interface TvIDImages {
   backdrops: Backdrop[];
   id: number;
   logos: any[];
@@ -168,6 +176,6 @@ interface Backdrop {
 
 // GENRE
 
-export interface TvIDCredits {
+export interface TvGenre {
   genres: Genre[]; //BEFORE
 }

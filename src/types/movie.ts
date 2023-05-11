@@ -1,3 +1,5 @@
+import { Review } from "./models";
+
 // FOR MEDIA TYPE AND MOVIEID RECOMENDATION
 export interface Movies {
   dates?: Dates;
@@ -57,6 +59,12 @@ export interface MoviesID {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  credits?: MoviesIDCredit;
+  videos?: MoviesIDVideo;
+  recommend?: MovieResult[];
+  images: MoviesIDImages;
+  isFavorite?: boolean;
+  reviews?: Review[];
 }
 
 interface Genre {
@@ -107,7 +115,7 @@ interface Cast {
 }
 
 //MEDIAID VIDEOS
-export interface MoviesIDCredit {
+export interface MoviesIDVideo {
   id: number;
   results: VideoResults[];
 }
@@ -144,6 +152,6 @@ interface Backdrop {
 }
 
 // GENRE
-export interface MoviesIDImages {
+export interface MoviesGenre {
   genres: Genre[]; //Already exist
 }

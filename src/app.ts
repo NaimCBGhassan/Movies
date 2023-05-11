@@ -6,6 +6,7 @@ import http from "http";
 import "./db";
 import { PORT } from "./env";
 import { router } from "./routes";
+import morgan from "morgan";
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(cookieParser());
+app.use(morgan("dev"));
 
 //   ROUTES
 app.use(router);

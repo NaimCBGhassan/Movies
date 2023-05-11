@@ -1,9 +1,11 @@
-import UserModel from "../models/User";
+/// <reference path="../types/custom.d.ts" />
+import UserModel from "../models/User.model";
 import { sign } from "jsonwebtoken";
-import { badRequest, created, error, notfound, ok, unauthorize } from "../handlers/response";
-import { Request, Response, response } from "express";
+import { badRequest, created, error, notfound, ok, unauthorize } from "../handlers/response.handler";
+import { Request, Response } from "express";
 import { SECRET_TOKEN } from "../env";
 
+// [POST] SignUp
 export const signup = async ({ body }: Request, res: Response) => {
   try {
     const { username, password, displayName } = body;
@@ -23,6 +25,7 @@ export const signup = async ({ body }: Request, res: Response) => {
   }
 };
 
+// [POST] SingIn
 export const signin = async ({ body }: Request, res: Response) => {
   try {
     const { username, password } = body;
@@ -50,6 +53,7 @@ export const signin = async ({ body }: Request, res: Response) => {
   }
 };
 
+// [PUT] Password update
 export const updatePassword = async ({ body, user }: Request, res: Response) => {
   try {
     const { password, newPassword } = body;
@@ -60,12 +64,15 @@ export const updatePassword = async ({ body, user }: Request, res: Response) => 
     if (!updatedUser.validPassword(password)) return badRequest(res, "Wrong password");
 
     updatedUser.setPassword(newPassword);
+
+    await updatedUser.save();
     return ok(res, { message: "Password changed successfully" });
   } catch (e) {
     error(res);
   }
 };
 
+// [GET] Get Info
 export const getInfo = async ({ user }: Request, res: Response) => {
   try {
     const userInfo = await UserModel.findById(user?.id);

@@ -1,5 +1,5 @@
 import { get } from "../axios/axios.client";
-import { TMDB } from "../types/tmdb/movie";
+import { TMDB } from "../types/tmdb";
 import tmdbEndpoints from "./tmdb.enpoints";
 
 const {

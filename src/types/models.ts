@@ -14,7 +14,6 @@ export interface UserMethods {
   validPassword: (password: string) => boolean;
 }
 
-// Create a new Model type that knows about IUserMethods...
 export type UserModel = Model<User, {}, UserMethods>;
 
 //Reviews
@@ -25,6 +24,7 @@ export interface Review {
   mediaId: string;
   mediaTitle: string;
   mediaPoster: string;
+  reviewId?: string;
 }
 
 //Favorites
@@ -36,3 +36,9 @@ export interface Favorite {
   mediaPoster: string;
   mediaRate: number;
 }
+
+export interface FavoriteMethods {
+  remove: () => Promise<void>;
+}
+
+export type FavoriteModel = Model<Favorite, {}, FavoriteMethods>;

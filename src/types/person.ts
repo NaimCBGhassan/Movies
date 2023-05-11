@@ -4,9 +4,9 @@ export interface PersonID {
   also_known_as: string[];
   biography: string;
   birthday: Date;
-  deathday: null;
+  deathday: Date | null;
   gender: number;
-  homepage: string;
+  homepage: string | null;
   id: number;
   imdb_id: string;
   known_for_department: string;
@@ -17,7 +17,7 @@ export interface PersonID {
 }
 
 // PERSON ID COMBINED CREDITS
-export interface TvIDCredits {
+export interface PersonIDCombined {
   cast: Cast[];
   crew: Cast[];
   id: number;

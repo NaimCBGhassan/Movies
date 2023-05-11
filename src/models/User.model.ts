@@ -41,3 +41,4 @@ UserSchema.methods.validPassword = function (password: string) {
 
 const UserModel = model<User, UserModel>("User", UserSchema);
 export default UserModel;
+ 
