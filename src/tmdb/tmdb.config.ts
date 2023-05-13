@@ -6,7 +6,6 @@ const getUrl = (endpoint: string, params?: Pick<TMDB, "page"> | Pick<TMDB, "quer
 
   if (params) {
     Object.entries(params).forEach(([key, value]) => {
-      console.log(key, value);
       qs.append(key, value);
     });
   }

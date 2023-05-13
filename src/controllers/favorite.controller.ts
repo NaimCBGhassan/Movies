@@ -11,7 +11,7 @@ export const addFavorite = async (req: Request, res: Response) => {
       mediaId: req.body.mediaId,
     });
 
-    if (isFavorite) return badRequest(res, "The user has already favorited this movie.");
+    if (isFavorite) return ok(res, isFavorite);
 
     const favorite = new FavoriteModel({
       ...req.body,

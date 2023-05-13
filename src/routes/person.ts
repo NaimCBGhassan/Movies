@@ -1,10 +1,9 @@
 import { Router } from "express";
-import { personDetail } from "../controllers/person.controller";
+import { personDetail, personMedias } from "../controllers/person.controller";
 
-const router = Router();
+const router = Router({ mergeParams: true });
 
-/*-----AUTH MIDDLEWARE-----*/
 router.get("/:personId", personDetail); //[GET] Person Detail
-router.get("/:personId/combined_credits", personDetail); //[GET] Person Combined Credits
+router.get("/:personId/medias", personMedias); //[GET] Person Combined Credits
 
 export { router };

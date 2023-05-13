@@ -15,7 +15,6 @@ export const createReview = async (req: Request, res: Response) => {
       ...req.body,
     });
 
-    console.log(review);
     await review.save();
 
     return created(res, {
@@ -37,6 +36,8 @@ export const removeReview = async (req: Request, res: Response) => {
     });
 
     if (!review) return notfound(res);
+
+    await review.deleteOne();
 
     return ok(res, { message: "Review succesfully deleted" });
   } catch (e) {

@@ -3,7 +3,8 @@ import { validationResult } from "express-validator";
 
 const validate = (req: Request, res: Response, next: NextFunction) => {
   const errors = validationResult(req);
-  if (!errors.isEmpty()) return res.status(400).json(errors.array()[0].msg);
+  if (!errors.isEmpty()) return res.status(400).json(errors.array()[0]);
+  next();
 };
 
 export default validate;

@@ -33,7 +33,6 @@ export const signin = async ({ body }: Request, res: Response) => {
     let user = await UserModel.findOne({ username }, "username password salt id displayName");
 
     if (!user) return badRequest(res, "User not exist");
-    console.log({ ...user });
 
     if (!user.validPassword(password)) return badRequest(res, "Wrong password");
 

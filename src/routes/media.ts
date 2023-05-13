@@ -1,9 +1,8 @@
 import { Router } from "express";
 import { getDetail, getGenres, getList, search } from "../controllers/media.controller";
 
-const router = Router();
+const router = Router({ mergeParams: true });
 
-/*-----AUTH MIDDLEWARE-----*/
 router.get("/list/:mediaType/:mediaCategory", getList); //[GET] list
 router.get("/genre/:mediaType", getGenres); //[GET] genres
 router.get("/search/:mediaType", search); //[GET] search

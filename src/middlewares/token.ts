@@ -26,7 +26,7 @@ export const auth = async (req: Request, res: Response, next: NextFunction) => {
   let user: User | undefined;
 
   if (typeof tokenDecoded === "string") {
-    const userDocument = await UserModel.findById({ _id: tokenDecoded });
+    const userDocument = await UserModel.findById(tokenDecoded);
     user = userDocument?.toObject();
   } else {
     const userDocument = await UserModel.findById(tokenDecoded.data);

@@ -1,13 +1,42 @@
 import { Router } from "express";
-import { personDetail } from "../controllers/person.controller";
+import { body } from "express-validator";
+import validate from "../handlers/request.handler";
 import { createReview, getReview, removeReview } from "../controllers/review.controllers";
 import { auth } from "../middlewares/token";
 
-const router = Router();
+const router = Router({ mergeParams: true });
 
-/*-----AUTH MIDDLEWARE-----*/
-router.post("/:mediaId", [auth], createReview); //[POST] Create Review
-router.delete("/:reviewId", [auth], removeReview); //[DELETE] Delete Review
-router.get("/", [auth], getReview); //[GET]s Get revies
+//[POST] Create Review
+router.post(
+  "/:mediaId",
+  [
+    auth,
+
+    body("content")
+      .exists()
+      .withMessage("content is required")
+      .isLength({ min: 8 })
+      .withMessage("content minimun 8 characters"),
+
+    body("mediaType")
+      .exists()
+      .withMessage("mediaType is required")
+      .custom((type) => ["movie", "tv"].includes(type))
+      .withMessage("mediaType invalid"),
+
+    body("mediaTitle").exists().withMessage("mediaTitle is required"),
+
+    body("mediaPoster").exists().withMessage("mediaPoster is required"),
+
+    validate,
+  ],
+  createReview
+);
+
+//[DELETE] Delete Review
+router.delete("/:reviewId", [auth], removeReview);
+
+//[GET]s Get review
+router.get("/", [auth], getReview);
 
 export { router };
