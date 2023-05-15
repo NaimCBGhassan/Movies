@@ -19,7 +19,7 @@ export const signup = async ({ body }: Request, res: Response) => {
 
     const token = sign({ data: user.id }, SECRET_TOKEN, { expiresIn: "24h" });
 
-    return created(res, { token, ...user.toObject() });
+    return created(res, { token, user: { ...user.toObject(), password: "", salt: "" } });
   } catch (e) {
     error(res);
   }
