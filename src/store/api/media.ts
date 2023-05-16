@@ -17,9 +17,9 @@ export const mediaApi = api.injectEndpoints({
         return `/media/genre/${mediaType}`;
       },
     }),
-    search: build.query<unknown, Pick<TMDB, "mediaType" | "page">>({
-      query: ({ mediaType, page }) => {
-        const params = queryString.stringify({ page });
+    search: build.query<unknown, Pick<TMDB, "mediaType" | "page" | "query">>({
+      query: ({ mediaType, page, query }) => {
+        const params = queryString.stringify({ page, query });
         return `/media/search/${mediaType}?${params}`;
       },
     }),
