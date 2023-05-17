@@ -3,6 +3,8 @@ import { useAppSelector } from "./store/store";
 import themeConfigs from "./configs/theme.config";
 import { ToastContainer } from "react-toastify";
 import CssBaseline from "@mui/material/CssBaseline";
+import { RouterProvider } from "react-router-dom";
+import { routes } from "./routes/routes";
 
 const App = () => {
   const { theme } = useAppSelector((state) => state.theme);
@@ -20,7 +22,11 @@ const App = () => {
         pauseOnHover
         theme={theme}
       />
+      {/* mui reset css */}
       <CssBaseline />
+      {/* app routes */}
+      <RouterProvider router={routes} />
+      {/* app routes */}
     </ThemeProvider>
   );
 };

@@ -2,7 +2,7 @@ import { ReactElement, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import { setAuthModalOpen } from "../../store/slice/authModalSlice";
 
-type Props = { children: ReactElement | ReactElement[] };
+type Props = { children: ReactElement };
 
 const ProtectedPage = ({ children }: Props) => {
   const dispatch = useAppDispatch();

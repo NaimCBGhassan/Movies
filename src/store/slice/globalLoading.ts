@@ -9,7 +9,7 @@ const initialState = {
 } as InitialState;
 
 export const globalLoadingSlice = createSlice({
-  name: "AuthModal",
+  name: "GlobalLoading",
   initialState,
   reducers: {
     setGlobalLoading: (state, action: PayloadAction<boolean>) => {

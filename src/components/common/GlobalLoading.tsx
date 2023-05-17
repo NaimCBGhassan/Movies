@@ -1,0 +1,52 @@
+import { Paper, Box, LinearProgress, Toolbar } from "@mui/material";
+import { useAppSelector } from "../../store/store";
+import { useEffect, useState } from "react";
+import Logo from "./Logo";
+
+const GlobalLoading = () => {
+  const { globalLoading } = useAppSelector((state) => state.globalLoading);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (globalLoading) {
+      setIsLoading(true);
+    } else {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
+    }
+  }, [globalLoading]);
+
+  return (
+    <>
+      {isLoading ? (
+        <Paper
+          sx={{
+            opacity: isLoading ? 1 : 0,
+            pointerEvents: "none",
+            transition: "all 0.3s ease",
+            position: "fixed",
+            width: "100vw",
+            height: "100vh",
+            zIndex: 999,
+          }}
+        >
+          <Toolbar />
+          <LinearProgress />
+          <Box
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%,-50%)",
+            }}
+          >
+            <Logo />
+          </Box>
+        </Paper>
+      ) : null}
+    </>
+  );
+};
+
+export default GlobalLoading;

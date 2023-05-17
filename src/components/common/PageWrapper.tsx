@@ -2,7 +2,7 @@ import { ReactElement, useEffect } from "react";
 import { useAppDispatch } from "../../store/store";
 import { setAppState } from "../../store/slice/appStateSlice";
 
-type Props = { state: string; children: ReactElement | ReactElement[] };
+type Props = { state: string; children: ReactElement };
 
 const PageWrapper = ({ state, children }: Props) => {
   const dispatch = useAppDispatch();
