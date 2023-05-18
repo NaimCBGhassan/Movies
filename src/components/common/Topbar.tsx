@@ -15,16 +15,14 @@ import Sidebar from "./Sidebar";
 
 type Props = {
   children: ReactElement;
-  window?: any;
 };
 
-const ScrollAppBar = ({ children, window }: Props) => {
+const ScrollAppBar = ({ children }: Props) => {
   const { theme } = useAppSelector((state) => state.theme);
 
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 50,
-    target: window ? window() : undefined,
   });
 
   return cloneElement(children, {
@@ -53,21 +51,23 @@ const Topbar = () => {
 
   return (
     <>
-      <Sidebar open={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+      <Sidebar open={sidebarOpen} toggleSidebar={toggleSidebar} />
       <ScrollAppBar>
         <AppBar elevation={0} sx={{ zIndex: 9999 }}>
           <Toolbar sx={{ alignItems: "center", justifyContent: "space-between" }}>
-            <Stack direction="row" spacing={1} alignItems="center">
-              <IconButton color="inherit" sx={{ mr: 2, display: { md: "none" } }} onClick={toggleSidebar}>
+            {/* Mobile main menu */}
+            <Stack direction="row" spacing={1} alignItems="center" sx={{ display: { md: "none" } }}>
+              <IconButton color="inherit" sx={{ mr: 2 }} onClick={toggleSidebar}>
                 <MenuIcon />
               </IconButton>
 
-              <Box sx={{ display: { xs: "inline-block", md: "none" } }}>
+              <Box>
                 <Logo />
               </Box>
             </Stack>
+            {/* Mobile main menu */}
 
-            {/* main menu */}
+            {/* Desktop main menu */}
             <Box flexGrow={1} alignItems="center" display={{ xs: "none", md: "flex" }}>
               <Box sx={{ marginRight: "30px" }}>
                 <Logo />
@@ -91,16 +91,16 @@ const Topbar = () => {
                 {theme === "light" && <WbSunnyOutlinedIcon />}
               </IconButton>
             </Box>
-            {/* main menu */}
+            {/* Desktop main menu */}
 
             {/* user menu */}
-            <Stack spacing={3} direction="row" alignItems="center">
-              {!user && (
+            {!user && (
+              <Stack spacing={3} direction="row" alignItems="center">
                 <Button variant="contained" onClick={() => dispatch(setAuthModalOpen(true))}>
                   sign in
                 </Button>
-              )}
-            </Stack>
+              </Stack>
+            )}
             {user && <UserMenu />}
             {/* user menu */}
           </Toolbar>

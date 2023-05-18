@@ -10,10 +10,10 @@ import { setTheme } from "../../store/slice/themeModeSlice";
 
 type Props = {
   open?: boolean;
-  setSidebarOpen: (value: React.SetStateAction<boolean>) => void;
+  toggleSidebar: () => void;
 };
 
-const Sidebar = ({ open, setSidebarOpen }: Props) => {
+const Sidebar = ({ open, toggleSidebar }: Props) => {
   const dispatch = useAppDispatch();
 
   const { user } = useAppSelector((state) => state.user);
@@ -48,7 +48,7 @@ const Sidebar = ({ open, setSidebarOpen }: Props) => {
             }}
             component={Link}
             to={item.path}
-            onClick={() => setSidebarOpen(false)}
+            onClick={() => toggleSidebar()}
           >
             <ListItemIcon>{item.icon}</ListItemIcon>
             <ListItemText
@@ -73,7 +73,7 @@ const Sidebar = ({ open, setSidebarOpen }: Props) => {
                 }}
                 component={Link}
                 to={item.path}
-                onClick={() => setSidebarOpen(false)}
+                onClick={() => toggleSidebar()}
               >
                 <ListItemIcon>{item.icon}</ListItemIcon>
                 <ListItemText
@@ -105,7 +105,7 @@ const Sidebar = ({ open, setSidebarOpen }: Props) => {
   return (
     <Drawer
       open={open}
-      onClose={() => setSidebarOpen(false)}
+      onClose={() => toggleSidebar()}
       sx={{
         "& .MuiDrawer-Paper": {
           boxSizing: "border-box",

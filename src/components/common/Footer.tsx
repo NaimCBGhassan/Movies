@@ -17,9 +17,9 @@ const Footer = () => {
           <Logo />
           <Box>
             {menuConfigs.main.map((item, index) => (
-              <Link to={item.path} key={index}>
-                <Button sx={{ color: "white" }}>{item.display}</Button>
-              </Link>
+              <Button component={Link} to={item.path} key={index} sx={{ color: "inherit" }}>
+                {item.display}
+              </Button>
             ))}
           </Box>
         </Stack>
