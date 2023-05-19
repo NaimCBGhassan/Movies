@@ -36,7 +36,7 @@ const UserMenu = () => {
               />
             </ListItemButton>
           ))}
-          <ListItemButton sx={{ borderRadius: "10px" }} onClick={() => dispatch(setUser(null))}>
+          <ListItemButton component={Link} to="/" sx={{ borderRadius: "10px" }} onClick={() => dispatch(setUser(null))}>
             <ListItemIcon>
               <LogoutOutlinedIcon />
             </ListItemIcon>

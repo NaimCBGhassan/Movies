@@ -7,6 +7,7 @@ import * as userApi from "../../store/api/user";
 import { setAuthModalOpen } from "../../store/slice/authModalSlice";
 import { setUser } from "../../store/slice/userSlice";
 import { isErrorWithMessage, isErrorWithMsg } from "../../utils/errorNarrowing";
+import { Body } from "../../types/user";
 
 type Props = { switchAuthState: () => void };
 
@@ -15,10 +16,7 @@ const SigninForm = ({ switchAuthState }: Props) => {
 
   const [signin, { isLoading, error }] = userApi.useLoginMutation();
 
-  const signinForm = useFormik<{
-    username: string;
-    password: string;
-  }>({
+  const signinForm = useFormik<Body>({
     initialValues: {
       password: "",
       username: "",

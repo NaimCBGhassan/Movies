@@ -21,9 +21,10 @@ export const userSlice = createSlice({
     setUser: (state, action: PayloadAction<User | null>) => {
       if (action.payload === null) {
         localStorage.removeItem("actkn");
+        toast.success("Sign out success");
       } else {
+        if (localStorage.getItem("actkn") === null) toast.success("Sign in success");
         if (action.payload.token) localStorage.setItem("actkn", action.payload.token);
-        toast("Sign in success");
       }
       state.user = action.payload;
     },

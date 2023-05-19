@@ -6,6 +6,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { RouterProvider } from "react-router-dom";
 import { routes } from "./routes/routes";
 
+import "react-toastify/dist/ReactToastify.css";
+
 const App = () => {
   const { theme } = useAppSelector((state) => state.theme);
 
@@ -14,12 +16,13 @@ const App = () => {
       {/* Config toastify */}
       <ToastContainer
         position="bottom-left"
-        autoClose={1000}
-        hideProgressBar={true}
+        autoClose={5000}
+        hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
         pauseOnFocusLoss
         pauseOnHover
+        limit={2}
         theme={theme}
       />
       {/* mui reset css */}

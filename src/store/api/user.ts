@@ -4,7 +4,10 @@ import { api } from "./api";
 export const userApi = api.injectEndpoints({
   endpoints: (builder) => ({
     register: builder.mutation<User, UserRegister>({
-      query: (body) => ({ url: "/user/register", method: "POST", body }),
+      query: (body) => ({ url: "/user/signup", method: "POST", body }),
+      transformErrorResponse: (error) => {
+        return error.data;
+      },
     }),
     login: builder.mutation<User, Body>({
       query: (body) => ({ url: "/user/signin", method: "POST", body }),
@@ -16,7 +19,7 @@ export const userApi = api.injectEndpoints({
       query: (body) => ({ url: "/user/updatePassword", method: "PUT", body }),
     }),
     getUser: builder.query<UserData, void>({
-      query: () => "/getinfo",
+      query: () => "/user/getinfo",
     }),
   }),
 });

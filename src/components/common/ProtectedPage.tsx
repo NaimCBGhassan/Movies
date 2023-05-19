@@ -9,7 +9,7 @@ const ProtectedPage = ({ children }: Props) => {
   const { user } = useAppSelector((state) => state.user);
 
   useEffect(() => {
-    dispatch(setAuthModalOpen(!!user));
+    dispatch(setAuthModalOpen(!user));
   }, [user, dispatch]);
 
   return user ? children : null;
