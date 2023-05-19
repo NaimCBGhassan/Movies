@@ -4,6 +4,7 @@ import { sign } from "jsonwebtoken";
 import { badRequest, created, error, notfound, ok, unauthorize } from "../handlers/response.handler";
 import { Request, Response } from "express";
 import { SECRET_TOKEN } from "../env";
+import { User } from "../types/models";
 
 // [POST] SignUp
 export const signup = async ({ body }: Request, res: Response) => {
@@ -19,7 +20,11 @@ export const signup = async ({ body }: Request, res: Response) => {
 
     const token = sign({ data: user.id }, SECRET_TOKEN, { expiresIn: "24h" });
 
-    return created(res, { token, user: { ...user.toObject(), password: "", salt: "" } });
+    const userObj: Partial<User> = user.toObject();
+    delete userObj.password;
+    delete userObj.salt;
+
+    return created(res, { token, user: { ...userObj } });
   } catch (e) {
     error(res);
   }
