@@ -14,8 +14,8 @@ const App = () => {
       {/* Config toastify */}
       <ToastContainer
         position="bottom-left"
-        autoClose={5000}
-        hideProgressBar={false}
+        autoClose={1000}
+        hideProgressBar={true}
         newestOnTop={false}
         closeOnClick
         pauseOnFocusLoss

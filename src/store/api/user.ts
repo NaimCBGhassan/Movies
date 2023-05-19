@@ -8,6 +8,9 @@ export const userApi = api.injectEndpoints({
     }),
     login: builder.mutation<User, Body>({
       query: (body) => ({ url: "/user/signin", method: "POST", body }),
+      transformErrorResponse: (error) => {
+        return error.data;
+      },
     }),
     updatePassword: builder.mutation<User, Omit<UpdatedPassword, "username">>({
       query: (body) => ({ url: "/user/updatePassword", method: "PUT", body }),

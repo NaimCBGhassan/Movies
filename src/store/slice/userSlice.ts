@@ -2,6 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { Favorite } from "../../types/favorite";
 import { User } from "../../types/user";
 import { TMDB } from "../../types/tmdb";
+import { toast } from "react-toastify";
 
 interface InitialState {
   user: User | null;
@@ -22,6 +23,7 @@ export const userSlice = createSlice({
         localStorage.removeItem("actkn");
       } else {
         if (action.payload.token) localStorage.setItem("actkn", action.payload.token);
+        toast("Sign in success");
       }
       state.user = action.payload;
     },
