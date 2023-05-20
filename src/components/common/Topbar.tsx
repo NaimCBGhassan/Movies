@@ -94,7 +94,7 @@ const Topbar = () => {
             {/* Desktop main menu */}
 
             {/* user menu */}
-            {!user && (
+            {!localStorage.getItem("actkn") && (
               <Stack>
                 <Button variant="contained" onClick={() => dispatch(setAuthModalOpen(true))}>
                   sign in

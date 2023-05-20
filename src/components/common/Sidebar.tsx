@@ -34,7 +34,9 @@ const Sidebar = ({ open, toggleSidebar }: Props) => {
           <Logo />
         </Stack>
       </Toolbar>
+
       <List sx={{ paddingX: "30px" }}>
+        {/* MENU */}
         <Typography variant="h6" marginBottom="20px">
           MENU
         </Typography>
@@ -57,7 +59,9 @@ const Sidebar = ({ open, toggleSidebar }: Props) => {
             />
           </ListItemButton>
         ))}
+        {/* MENU */}
 
+        {/* PERSONAL */}
         {user && (
           <>
             <Typography variant="h6" marginBottom="20px">
@@ -84,7 +88,9 @@ const Sidebar = ({ open, toggleSidebar }: Props) => {
             ))}
           </>
         )}
+        {/* PERSONAL */}
 
+        {/* THEME */}
         <Typography variant="h6" marginBottom="20px">
           THEME
         </Typography>
@@ -98,6 +104,7 @@ const Sidebar = ({ open, toggleSidebar }: Props) => {
             primary={<Typography textTransform="uppercase">{theme === "dark" ? "dark mode" : "light mode"}</Typography>}
           />
         </ListItemButton>
+        {/* THEME */}
       </List>
     </>
   );

@@ -8,6 +8,7 @@ import { setAuthModalOpen } from "../../store/slice/authModalSlice";
 import { setUser } from "../../store/slice/userSlice";
 import { isErrorWithMessage, isErrorWithMsg } from "../../utils/errorNarrowing";
 import { Body } from "../../types/user";
+import { toast } from "react-toastify";
 
 type Props = { switchAuthState: () => void };
 
@@ -34,8 +35,10 @@ const SigninForm = ({ switchAuthState }: Props) => {
         }
         dispatch(setUser(data.data));
         dispatch(setAuthModalOpen(false));
-      } catch (error) {
-        console.log(error);
+        toast.success("Sign In success");
+      } catch (err) {
+        if (err && isErrorWithMessage(err)) toast.error(err.message);
+        if (err && isErrorWithMsg(err)) toast.error(err.msg);
       }
       signinForm.resetForm();
     },

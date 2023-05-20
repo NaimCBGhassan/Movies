@@ -16,8 +16,8 @@ export const uiConfigs = {
         backgroundImage: "linear-gradient(to right, rgba(245,245,245,1), rgba(0,0,0,0))",
       },
     },
-    typoLines: (lines: string, textAlign: string) => ({
-      textAlign: textAlign || "justify",
+    typoLines: (lines: number, textAlign = "justify") => ({
+      textAlign: textAlign,
       display: "-webkit-box",
       overflow: "hidden",
       WebkitBoxOrient: "vertical",

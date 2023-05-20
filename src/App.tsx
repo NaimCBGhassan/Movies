@@ -5,6 +5,9 @@ import { ToastContainer } from "react-toastify";
 import CssBaseline from "@mui/material/CssBaseline";
 import { RouterProvider } from "react-router-dom";
 import { routes } from "./routes/routes";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 import "react-toastify/dist/ReactToastify.css";
 

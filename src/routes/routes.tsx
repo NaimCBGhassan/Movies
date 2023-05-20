@@ -12,11 +12,12 @@ import {
 } from "../pages";
 import MainLayout from "../components/layout/MainLayout";
 import PageWrapper from "../components/common/PageWrapper";
+import { TMDB } from "../types/tmdb";
 
 export const routesGen = {
   home: "/",
   mediaList: (type: string) => `/${type}`,
-  mediaDetail: (type: string, id: string) => `/${type}/${id}`,
+  mediaDetail: (type: Pick<TMDB, "mediaType">, id: string) => `/${type}/${id}`,
   mediaSearch: `/search`,
   person: (id: string) => `/person/${id}`,
   favoriteList: `/favorites`,

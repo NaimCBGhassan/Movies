@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../store/store";
 import { Link } from "react-router-dom";
 import menuConfigs from "../../configs/menu.config";
 import { setUser } from "../../store/slice/userSlice";
+import { toast } from "react-toastify";
 
 const UserMenu = () => {
   const { user } = useAppSelector((state) => state.user);
@@ -14,6 +15,7 @@ const UserMenu = () => {
   const [anchorEl, setAnchorEl] = useState<HTMLHeadingElement | null>(null);
 
   const toggleMenu = (e: MouseEvent<HTMLHeadingElement>) => setAnchorEl(e.currentTarget);
+  const handleSignOut = () => toast.success("Sign out success");
 
   return (
     <>
@@ -40,7 +42,14 @@ const UserMenu = () => {
             <ListItemIcon>
               <LogoutOutlinedIcon />
             </ListItemIcon>
-            <ListItemText disableTypography primary={<Typography textTransform="uppercase">sign out</Typography>} />
+            <ListItemText
+              disableTypography
+              primary={
+                <Typography textTransform="uppercase" onClick={handleSignOut}>
+                  sign out
+                </Typography>
+              }
+            />
           </ListItemButton>
         </Menu>
       </>
