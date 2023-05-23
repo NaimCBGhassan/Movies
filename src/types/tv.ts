@@ -10,7 +10,7 @@ export interface TvSeries {
 
 interface TvSerieResult {
   backdrop_path: null | string;
-  first_air_date: Date;
+  first_air_date: string;
   genre_ids: number[];
   id: number;
   name: string;

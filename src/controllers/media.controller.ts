@@ -75,15 +75,15 @@ export const getDetail = async (req: Request, res: Response) => {
 
     const tokenDecoded = tokenDecode(req);
 
-    if (!tokenDecoded) return unauthorize(res);
-
     let user: User | undefined;
-    if (typeof tokenDecoded === "string") {
-      const documentUser = await UserModel.findById({ _id: tokenDecoded });
-      user = documentUser?.toObject();
-    } else {
-      const documentUser = await UserModel.findById(tokenDecoded.data);
-      user = documentUser?.toObject();
+    if (tokenDecoded) {
+      if (typeof tokenDecoded === "string") {
+        const documentUser = await UserModel.findById({ _id: tokenDecoded });
+        user = documentUser?.toObject();
+      } else {
+        const documentUser = await UserModel.findById(tokenDecoded.data);
+        user = documentUser?.toObject();
+      }
     }
 
     if (user) {
