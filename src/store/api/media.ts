@@ -27,6 +27,7 @@ export const mediaApi = api.injectEndpoints({
       query: ({ mediaType, mediaId }) => {
         return `/media/detail/${mediaType}/${mediaId}`;
       },
+      providesTags: ["Medias"],
     }),
   }),
 });

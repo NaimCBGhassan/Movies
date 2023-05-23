@@ -8,9 +8,9 @@ export interface TvSeries {
   total_results: number;
 }
 
-interface TvSerieResult {
+export interface TvSerieResult {
   backdrop_path: null | string;
-  first_air_date: Date;
+  first_air_date: string;
   genre_ids: number[];
   id: number;
   name: string;
@@ -31,7 +31,7 @@ export interface TvID {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   created_by: any[];
   episode_run_time: number[];
-  first_air_date: Date;
+  first_air_date: string;
   genres: Genre[];
   homepage: string;
   id: number;

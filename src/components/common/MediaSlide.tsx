@@ -5,6 +5,7 @@ import * as MediaApi from "../../store/api/media";
 import AutoSwiper from "./AutoSwiper";
 import { toast } from "react-toastify";
 import { isErrorWithMessage } from "../../utils/errorNarrowing";
+import MediaItem from "./MediaItem";
 
 const MediaSlide = ({ mediaType, mediaCategory }: Pick<TMDB, "mediaType" | "mediaCategory">) => {
   const { data: medias, error } = MediaApi.useGetListQuery({ mediaType, mediaCategory, page: "1" });
@@ -17,7 +18,7 @@ const MediaSlide = ({ mediaType, mediaCategory }: Pick<TMDB, "mediaType" | "medi
     <AutoSwiper>
       {medias?.results.map((media, index) => (
         <SwiperSlide key={index}>
-          <div>Hola</div>
+          <MediaItem media={media} mediaType={mediaType} />
         </SwiperSlide>
       ))}
     </AutoSwiper>

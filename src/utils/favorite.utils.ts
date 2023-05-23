@@ -1,11 +1,11 @@
 import { Favorite } from "../types/favorite";
 
 interface ParamsType {
-  listFavorite: Favorite[];
-  mediaId: string;
+  listFavorites: Favorite[];
+  mediaId: number;
 }
 
 export const favoriteUtils = {
-  check: ({ listFavorite, mediaId }: ParamsType) =>
-    listFavorite && listFavorite.find((e) => e.mediaId.toString() === mediaId.toString()) !== undefined,
+  check: ({ listFavorites, mediaId }: ParamsType) =>
+    listFavorites && listFavorites.find((e) => e.mediaId.toString() === mediaId.toString()) !== undefined,
 };

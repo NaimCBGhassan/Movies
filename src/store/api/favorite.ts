@@ -9,15 +9,18 @@ export const favoriteApi = api.injectEndpoints({
         method: "POST",
         body,
       }),
+      invalidatesTags: ["Favorites"],
     }),
     getFavorite: build.query<Favorite[], void>({
       query: () => `/favorite`,
+      providesTags: ["Favorites"],
     }),
     deleteFavorite: build.mutation<{ message: string }, Pick<Favorite, "id">>({
       query: ({ id }) => ({
         url: `/favorite/${id}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["Favorites"],
     }),
   }),
 });

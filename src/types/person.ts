@@ -23,7 +23,7 @@ export interface PersonIDCombined {
   id: number;
 }
 
-interface Cast {
+export interface Cast {
   adult: boolean;
   backdrop_path: null | string;
   genre_ids: number[];
@@ -44,7 +44,7 @@ interface Cast {
   media_type: string;
   origin_country?: string[];
   original_name?: string;
-  first_air_date?: Date;
+  first_air_date?: string;
   name?: string;
   episode_count?: number;
   department?: string;
