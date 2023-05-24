@@ -1,4 +1,4 @@
-import { Review } from "./review";
+import { ReviewPopulate } from "./review";
 
 // FOR MEDIA TYPE AND TV RECOMENDATION
 export interface TvSeries {
@@ -22,6 +22,7 @@ export interface TvSerieResult {
   poster_path: string;
   vote_average: number;
   vote_count: number;
+  media_type?: "tv"; // TO /reccomendattions
 }
 
 // FOR MEDIA ID
@@ -64,7 +65,7 @@ export interface TvID {
   recommend?: TvSerieResult[]; // This is different
   images: TvIDImages;
   isFavorite?: boolean;
-  reviews?: Review[];
+  reviews?: ReviewPopulate[];
 }
 
 interface Genre {

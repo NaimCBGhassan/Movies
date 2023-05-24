@@ -9,15 +9,18 @@ export const reviewApi = api.injectEndpoints({
         method: "POST",
         body,
       }),
+      invalidatesTags: ["Reviews"],
     }),
     getReview: build.query<Review[], void>({
       query: () => `/review`,
+      providesTags: ["Reviews"],
     }),
     deleteReview: build.mutation<{ message: string }, Pick<Review, "id">>({
       query: ({ id }) => ({
         url: `/review/${id}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["Reviews"],
     }),
   }),
 });

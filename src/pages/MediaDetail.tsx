@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import CircularRate from "../components/common/CircularRate";
 import Container from "../components/common/Container";
-import ImageHeader from "../components/common/ImageHeader";
+import ImageHeader from "../components/common/DetailsPage/ImageHeader";
 import { uiConfigs } from "../configs/ui.config";
 import * as MediaApi from "../store/api/media";
 import * as FavoriteApi from "../store/api/favorite";
@@ -16,11 +16,17 @@ import { setGlobalLoading } from "../store/slice/globalLoading";
 import { setAuthModalOpen } from "../store/slice/authModalSlice";
 import { addFavorite, removeFavorite } from "../store/slice/userSlice";
 import { isErrorWithMessage } from "../utils/errorNarrowing";
-import { MoviesGenre, MoviesID } from "../types/movie";
-import { TvGenre, TvID } from "../types/tv";
+import { MoviesID } from "../types/movie";
+import { TvID } from "../types/tv";
 import { backdropPath, posterPath } from "../utils/tmdb.config";
-import CastSlide from "../components/common/CastSlide";
+import CastSlide from "../components/common/DetailsPage/CastSlide";
 import { isFavoriteType } from "../utils/narrowingTypes";
+import MediaVideoSlide from "../components/common/DetailsPage/MediaVideoSlide";
+import BackdropSlide from "../components/common/DetailsPage/BackdropSlide";
+import PosterSlide from "../components/common/DetailsPage/PosterSlide";
+import RecommendSlide from "../components/common/DetailsPage/RecommendSlide";
+import MediaSlide from "../components/common/MediaSlide";
+import MediaReview from "../components/common/DetailsPage/MediaReview";
 
 const MediaDetail = () => {
   const { mediaType, mediaId } = useParams() as Pick<TMDB, "mediaType" | "mediaId">;
@@ -32,7 +38,7 @@ const MediaDetail = () => {
     isFetching: mediaIsLoading,
     error: mediaError,
   } = MediaApi.useGetDetailQuery({ mediaType, mediaId });
-  const { data: favoriteData, isFetching: favoriteIsLoading, error: favoriteError } = FavoriteApi.useGetFavoriteQuery();
+
   const [addFavoriteApi, { isLoading: addFavoriteLoading }] = FavoriteApi.useAddFavoriteMutation();
   const [removeFavoriteApi, { isLoading: removeFavoriteLoading }] = FavoriteApi.useDeleteFavoriteMutation();
 
@@ -41,7 +47,7 @@ const MediaDetail = () => {
 
   const dispatch = useAppDispatch();
 
-  const videoRef = useRef<HTMLVideoElement>();
+  const videoRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     dispatch(setGlobalLoading(mediaIsLoading));
@@ -53,8 +59,7 @@ const MediaDetail = () => {
     }
 
     if (mediaError && isErrorWithMessage(mediaError)) toast.error(mediaError.message);
-    if (favoriteError && isErrorWithMessage(favoriteError)) toast.error(favoriteError.message);
-  }, [mediaIsLoading, mediaError, favoriteError, mediaData, dispatch]);
+  }, [mediaIsLoading, mediaError, mediaData, dispatch]);
 
   const onFavoriteClick = async () => {
     if (!user) return dispatch(setAuthModalOpen(true));
@@ -189,6 +194,45 @@ const MediaDetail = () => {
           </Box>
         </Box>
         {/* media content */}
+
+        {/* media videos */}
+        <div ref={videoRef} style={{ paddingTop: "2rem" }}>
+          <Container header="Videos">
+            {mediaData.videos && <MediaVideoSlide videos={mediaData.videos.results.slice(0, 4)} />}
+          </Container>
+        </div>
+        {/* media videos */}
+        {/* media backdrop */}
+        {mediaData.images.backdrops.length > 0 && (
+          <Container header="backdrops">
+            <BackdropSlide backdrops={mediaData.images.backdrops} />
+          </Container>
+        )}
+        {/* media backdrop */}
+
+        {/* media posters */}
+        {mediaData.images.posters.length > 0 && (
+          <Container header="posters">
+            <PosterSlide posters={mediaData.images.posters} />
+          </Container>
+        )}
+        {/* media posters */}
+        {/* media reviews */}
+        {mediaData.reviews && mediaData.reviews.length > 0 && (
+          <Container header="reviews">
+            <MediaReview reviews={mediaData.reviews} media={mediaData} mediaType={mediaType} />
+          </Container>
+        )}
+        {/* media reviews */}
+        {/* media recommendation */}
+        <Container header="you may also like">
+          {mediaData.recommend && mediaData.recommend.length > 0 ? (
+            <RecommendSlide medias={mediaData.recommend} mediaType={mediaType} />
+          ) : (
+            <MediaSlide mediaCategory="top_rated" mediaType={mediaType} />
+          )}
+        </Container>
+        {/* media recommendation */}
       </Box>
     </>
   ) : null;

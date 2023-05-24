@@ -1,11 +1,11 @@
 import { Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { posterPath } from "../../utils/tmdb.config";
-import { uiConfigs } from "../../configs/ui.config";
-import { routesGen } from "../../routes/routes";
-import { TvIDCredits } from "../../types/tv";
-import { MoviesIDCredit } from "../../types/movie";
+import { posterPath } from "../../../utils/tmdb.config";
+import { uiConfigs } from "../../../configs/ui.config";
+import { routesGen } from "../../../routes/routes";
+import { TvIDCredits } from "../../../types/tv";
+import { MoviesIDCredit } from "../../../types/movie";
 
 type Props = {
   casts?: TvIDCredits["cast"] | MoviesIDCredit["cast"];

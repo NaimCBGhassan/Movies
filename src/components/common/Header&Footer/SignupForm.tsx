@@ -1,13 +1,13 @@
 import { LoadingButton } from "@mui/lab";
 import { Alert, Box, Button, Stack, TextField } from "@mui/material";
 import { useFormik } from "formik";
-import { useAppDispatch } from "../../store/store";
+import { useAppDispatch } from "../../../store/store";
 import * as Yup from "yup";
-import * as userApi from "../../store/api/user";
-import { setAuthModalOpen } from "../../store/slice/authModalSlice";
-import { setUser } from "../../store/slice/userSlice";
-import { isErrorWithMessage, isErrorWithMsg } from "../../utils/errorNarrowing";
-import { UserRegister } from "../../types/user";
+import * as userApi from "../../../store/api/user";
+import { setAuthModalOpen } from "../../../store/slice/authModalSlice";
+import { setUser } from "../../../store/slice/userSlice";
+import { isErrorWithMessage, isErrorWithMsg } from "../../../utils/errorNarrowing";
+import { UserRegister } from "../../../types/user";
 import { toast } from "react-toastify";
 
 type Props = { switchAuthState: () => void };

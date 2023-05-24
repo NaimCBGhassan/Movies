@@ -1,8 +1,8 @@
 import { Box, Modal } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../store/store";
-import { setAuthModalOpen } from "../../store/slice/authModalSlice";
-import Logo from "./Logo";
+import { useAppDispatch, useAppSelector } from "../../../store/store";
+import { setAuthModalOpen } from "../../../store/slice/authModalSlice";
+import Logo from "../Logo";
 import SigninForm from "./SigninForm";
 import SignupForm from "./SignupForm";
 

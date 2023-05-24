@@ -1,4 +1,4 @@
-import { Review } from "./review";
+import { ReviewPopulate } from "./review";
 
 // FOR MEDIA TYPE AND MOVIEID RECOMENDATION
 export interface Movies {
@@ -64,7 +64,7 @@ export interface MoviesID {
   recommend?: MovieResult[];
   images: MoviesIDImages;
   isFavorite?: boolean;
-  reviews?: Review[];
+  reviews?: ReviewPopulate[];
 }
 
 interface Genre {

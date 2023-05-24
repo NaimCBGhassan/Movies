@@ -3,7 +3,7 @@ import { Box, Stack, Typography } from "@mui/material";
 
 type Props = {
   header?: string;
-  children: ReactElement;
+  children?: ReactElement | ReactElement[] | null;
 };
 
 const Container = ({ header, children }: Props) => {

@@ -1,9 +1,9 @@
 import { Box } from "@mui/material";
 import { Outlet } from "react-router-dom";
 import GlobalLoading from "../common/GlobalLoading";
-import Footer from "../common/Footer";
-import Topbar from "../common/Topbar";
-import AuthModal from "../common/AuthModal";
+import Footer from "../common/Header&Footer/Footer";
+import Topbar from "../common/Header&Footer/Topbar";
+import AuthModal from "../common/Header&Footer/AuthModal";
 import { useAppDispatch } from "../../store/store";
 import { useEffect } from "react";
 import * as UserApi from "../../store/api/user";

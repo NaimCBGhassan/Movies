@@ -1,12 +1,12 @@
 import { Drawer, List, ListItemButton, ListItemIcon, ListItemText, Stack, Toolbar, Typography } from "@mui/material";
-import { useAppDispatch, useAppSelector } from "../../store/store";
+import { useAppDispatch, useAppSelector } from "../../../store/store";
 import { Link } from "react-router-dom";
-import menuConfigs from "../../configs/menu.config";
-import Logo from "./Logo";
-import { uiConfigs } from "../../configs/ui.config";
+import menuConfigs from "../../../configs/menu.config";
+import Logo from "../Logo";
+import { uiConfigs } from "../../../configs/ui.config";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
-import { setTheme } from "../../store/slice/themeModeSlice";
+import { setTheme } from "../../../store/slice/themeModeSlice";
 
 type Props = {
   open?: boolean;

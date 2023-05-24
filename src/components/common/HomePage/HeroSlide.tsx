@@ -1,20 +1,20 @@
-import { TMDB } from "../../types/tmdb";
+import { TMDB } from "../../../types/tmdb";
 import { PlayArrow } from "@mui/icons-material";
 import { Box, Button, Chip, Divider, Stack, Typography, useTheme } from "@mui/material";
 import { useEffect } from "react";
-import { useAppDispatch } from "../../store/store";
+import { useAppDispatch } from "../../../store/store";
 import { Link } from "react-router-dom";
 import { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { toast } from "react-toastify";
 
-import { setGlobalLoading } from "../../store/slice/globalLoading";
-import { routesGen } from "../../routes/routes";
-import { uiConfigs } from "../../configs/ui.config";
-import CircularRate from "./CircularRate";
-import * as MediaApi from "../../store/api/media";
-import { isErrorWithMessage } from "../../utils/errorNarrowing";
-import { backdropPath } from "../../utils/tmdb.config";
+import { setGlobalLoading } from "../../../store/slice/globalLoading";
+import { routesGen } from "../../../routes/routes";
+import { uiConfigs } from "../../../configs/ui.config";
+import CircularRate from "../CircularRate";
+import * as MediaApi from "../../../store/api/media";
+import { isErrorWithMessage } from "../../../utils/errorNarrowing";
+import { backdropPath } from "../../../utils/tmdb.config";
 
 const HeroSlide = ({ mediaType, mediaCategory }: Pick<TMDB, "mediaType" | "mediaCategory">) => {
   const theme = useTheme();

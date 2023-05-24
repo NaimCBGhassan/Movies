@@ -1,10 +1,10 @@
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import { ListItemButton, ListItemIcon, ListItemText, Menu, Typography } from "@mui/material";
 import { useState, MouseEvent } from "react";
-import { useAppDispatch, useAppSelector } from "../../store/store";
+import { useAppDispatch, useAppSelector } from "../../../store/store";
 import { Link } from "react-router-dom";
-import menuConfigs from "../../configs/menu.config";
-import { setUser } from "../../store/slice/userSlice";
+import menuConfigs from "../../../configs/menu.config";
+import { setUser } from "../../../store/slice/userSlice";
 import { toast } from "react-toastify";
 
 const UserMenu = () => {

@@ -1,5 +1,5 @@
 import { Box, useTheme } from "@mui/material";
-import { uiConfigs } from "../../configs/ui.config";
+import { uiConfigs } from "../../../configs/ui.config";
 
 type Props = {
   imgPath: string;

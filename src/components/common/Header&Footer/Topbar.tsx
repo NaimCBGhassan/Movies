@@ -1,15 +1,15 @@
 import { ReactElement } from "react";
-import { useAppDispatch, useAppSelector } from "../../store/store";
+import { useAppDispatch, useAppSelector } from "../../../store/store";
 import MenuIcon from "@mui/icons-material/Menu";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
 import { AppBar, Box, Button, IconButton, Stack, Toolbar, useScrollTrigger } from "@mui/material";
 import { cloneElement, useState } from "react";
 import { Link } from "react-router-dom";
-import menuConfigs from "../../configs/menu.config";
-import { setAuthModalOpen } from "../../store/slice/authModalSlice";
-import { setTheme } from "../../store/slice/themeModeSlice";
-import Logo from "./Logo";
+import menuConfigs from "../../../configs/menu.config";
+import { setAuthModalOpen } from "../../../store/slice/authModalSlice";
+import { setTheme } from "../../../store/slice/themeModeSlice";
+import Logo from "../Logo";
 import UserMenu from "./UserMenu";
 import Sidebar from "./Sidebar";
 
