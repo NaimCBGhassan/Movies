@@ -218,11 +218,7 @@ const MediaDetail = () => {
         )}
         {/* media posters */}
         {/* media reviews */}
-        {mediaData.reviews && mediaData.reviews.length > 0 && (
-          <Container header="reviews">
-            <MediaReview reviews={mediaData.reviews} media={mediaData} mediaType={mediaType} />
-          </Container>
-        )}
+        {mediaData.reviews && <MediaReview reviews={mediaData.reviews} media={mediaData} mediaType={mediaType} />}
         {/* media reviews */}
         {/* media recommendation */}
         <Container header="you may also like">

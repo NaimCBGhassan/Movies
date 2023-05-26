@@ -3,7 +3,7 @@ import { TvSerieResult } from "../types/tv";
 import { Cast } from "../types/person";
 import { TMDB } from "../types/tmdb";
 import { Favorite } from "../types/favorite";
-import { Review } from "../types/review";
+import { ReviewPopulate } from "../types/review";
 
 //MEDIAS
 
@@ -29,8 +29,8 @@ export function isFavoriteType(favorite: unknown): favorite is { data: Favorite 
 }
 
 //isReview
-export function isReviewType(review: unknown): review is { data: Review } {
-  const { data } = review as { data: Review };
+export function isReviewType(review: unknown): review is { data: ReviewPopulate } {
+  const { data } = review as { data: ReviewPopulate };
   const flag1 = "userId" in data;
   const flag2 = "id" in data;
   const flag3 = "content" in data;

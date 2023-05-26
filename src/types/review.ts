@@ -20,4 +20,5 @@ export interface ReviewPopulate {
   mediaTitle: string;
   mediaPoster: string;
   id: string;
+  createdAt: Date;
 }

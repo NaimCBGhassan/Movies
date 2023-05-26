@@ -1,14 +1,17 @@
 import { api } from "./api";
-import { Review } from "../../types/review";
+import { Review, ReviewPopulate } from "../../types/review";
 
 export const reviewApi = api.injectEndpoints({
   endpoints: (build) => ({
-    addReview: build.mutation<Review, Omit<Review, "userId" | "id">>({
+    addReview: build.mutation<ReviewPopulate, Omit<Review, "userId" | "id">>({
       query: (body) => ({
         url: `/review/${body.mediaId}`,
         method: "POST",
         body,
       }),
+      transformErrorResponse: (error) => {
+        return error.data;
+      },
       invalidatesTags: ["Reviews"],
     }),
     getReview: build.query<Review[], void>({
@@ -20,6 +23,10 @@ export const reviewApi = api.injectEndpoints({
         url: `/review/${id}`,
         method: "DELETE",
       }),
+      transformErrorResponse: (error) => {
+        console.log(error);
+        return error.data;
+      },
       invalidatesTags: ["Reviews"],
     }),
   }),
