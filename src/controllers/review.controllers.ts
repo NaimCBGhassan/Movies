@@ -15,11 +15,9 @@ export const createReview = async (req: Request, res: Response) => {
       ...req.body,
     });
 
-    await review.save();
+    const newReview = await review.save();
 
-    return created(res, {
-      ...review.toObject(),
-    });
+    return created(res, await newReview.populate("userId"));
   } catch (e) {
     error(res);
   }

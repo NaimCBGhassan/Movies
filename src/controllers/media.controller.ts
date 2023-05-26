@@ -92,8 +92,9 @@ export const getDetail = async (req: Request, res: Response) => {
       media.isFavorite = isFavorite !== null;
     }
 
-    media.reviews = await ReviewModel.find({ mediaId }).populate("user").sort("-createdAt");
-
+    console.log("first");
+    media.reviews = await ReviewModel.find({ mediaId }).populate("userId").sort("-createdAt");
+    console.log("first");
     return ok(res, media);
   } catch (e) {
     error(res);
