@@ -3,7 +3,7 @@ import { Review, ReviewPopulate } from "../../types/review";
 
 export const reviewApi = api.injectEndpoints({
   endpoints: (build) => ({
-    addReview: build.mutation<ReviewPopulate, Omit<Review, "userId" | "id">>({
+    addReview: build.mutation<ReviewPopulate, Omit<Review, "userId" | "id" | "createdAt">>({
       query: (body) => ({
         url: `/review/${body.mediaId}`,
         method: "POST",

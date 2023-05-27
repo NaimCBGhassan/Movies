@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { SwiperSlide } from "swiper/react";
 import { youtubePath } from "../../../utils/tmdb.config";
 import { MoviesIDVideo } from "../../../types/movie";
