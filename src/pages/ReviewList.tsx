@@ -1,6 +1,6 @@
 import { LoadingButton } from "@mui/lab";
 import { Box, Button, Divider, Stack, Typography } from "@mui/material";
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import { useAppDispatch } from "../store/store";
 import { toast } from "react-toastify";

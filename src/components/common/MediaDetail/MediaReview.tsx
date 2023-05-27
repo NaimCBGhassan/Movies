@@ -1,4 +1,4 @@
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 import { toast } from "react-toastify";
 
 import { MutableRefObject, useEffect, useRef, useState } from "react";
