@@ -10,7 +10,7 @@ Moon<span color="red">Flix</span>
 This is a FullStack project made with MERN stack. MoonFlix is website where you will be able to see all of you favorites movies and TV series
 </p>
 
-<img src="./src/image.webp" alt="API REST" width="100%"/>
+<img src="./public/moonflix.jpg" alt="API REST" width="100%"/>
 
 <hr/>
 
