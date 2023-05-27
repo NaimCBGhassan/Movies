@@ -4,14 +4,14 @@ import { PersonID, PersonIDCombined } from "../../types/person";
 
 export const personApi = api.injectEndpoints({
   endpoints: (build) => ({
-    getPersonDetail: build.query<PersonID, Pick<TMDB, "mediaId">>({
-      query: ({ mediaId }) => {
-        return `/person/${mediaId}`;
+    getPersonDetail: build.query<PersonID, Pick<TMDB, "personId">>({
+      query: ({ personId }) => {
+        return `/person/${personId}`;
       },
     }),
-    getPersonMedia: build.query<PersonIDCombined, Pick<TMDB, "mediaId">>({
-      query: ({ mediaId }) => {
-        return `/person/${mediaId}/medias`;
+    getPersonMedia: build.query<PersonIDCombined, Pick<TMDB, "personId">>({
+      query: ({ personId }) => {
+        return `/person/${personId}/medias`;
       },
     }),
   }),

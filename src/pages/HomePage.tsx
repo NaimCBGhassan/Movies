@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import HeroSlide from "../components/common/HomePage/HeroSlide";
+import HeroSlide from "../components/common/HeroSlide";
 import { uiConfigs } from "../configs/ui.config";
 import Container from "../components/common/Container";
 import MediaSlide from "../components/common/MediaSlide";

@@ -3,8 +3,8 @@ export interface PersonID {
   adult: boolean;
   also_known_as: string[];
   biography: string;
-  birthday: Date;
-  deathday: Date | null;
+  birthday: string;
+  deathday: string | null;
   gender: number;
   homepage: string | null;
   id: number;

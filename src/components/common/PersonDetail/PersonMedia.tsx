@@ -1,24 +1,27 @@
 import { Box, Toolbar, Typography, Stack } from "@mui/material";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import PersonMediaGrid from "../components/common/PersonDetail/PersonMediaGrid";
-import { posterPath } from "../utils/tmdb.config";
-import { uiConfigs } from "../configs/ui.config";
-import Container from "../components/common/Container";
-import * as PersonApi from "../store/api/person";
+import PersonMediaGrid from "./PersonMediaGrid";
+import { posterPath } from "../../../utils/tmdb.config";
+import { uiConfigs } from "../../../configs/ui.config";
+import Container from "../Container";
+import * as PersonApi from "../../../store/api/person";
 import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
-import { setGlobalLoading } from "../store/slice/globalLoading";
-import { isErrorWithMessage } from "../utils/errorNarrowing";
+import { useAppDispatch } from "../../../store/store";
+import { setGlobalLoading } from "../../../store/slice/globalLoading";
+import { TMDB } from "../../../types/tmdb";
+import { isErrorWithMessage } from "../../../utils/errorNarrowing";
 
 const PersonDetail = () => {
-  const { personId } = useParams() as { personId: string };
-  const dispatch = useDispatch();
+  const { personId } = useParams() as Pick<TMDB, "personId">;
+
+  const dispatch = useAppDispatch();
 
   const { data: person, isLoading, error } = PersonApi.useGetPersonDetailQuery({ personId });
 
   useEffect(() => {
     dispatch(setGlobalLoading(isLoading));
+
     if (error && isErrorWithMessage(error)) toast.error(error.message);
   }, [isLoading, error, dispatch]);
 

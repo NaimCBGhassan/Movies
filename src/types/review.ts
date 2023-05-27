@@ -6,6 +6,7 @@ export interface Review {
   mediaTitle: string;
   mediaPoster: string;
   id: string;
+  createdAt: Date;
 }
 
 export interface ReviewPopulate {

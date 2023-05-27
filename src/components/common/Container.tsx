@@ -1,9 +1,8 @@
-import { ReactElement } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 
 type Props = {
   header?: string;
-  children?: ReactElement | ReactElement[] | null;
+  children?: React.ReactNode;
 };
 
 const Container = ({ header, children }: Props) => {

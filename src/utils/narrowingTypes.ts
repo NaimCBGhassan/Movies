@@ -35,5 +35,14 @@ export function isReviewType(review: unknown): review is { data: ReviewPopulate 
   const flag2 = "id" in data;
   const flag3 = "content" in data;
 
-  return flag1 && flag2;
+  return flag1 && flag2 && flag3;
+}
+
+//isFavorite
+export function isFavorite(favorite: unknown): favorite is Favorite {
+  const flag1 = "mediaPoster" in (favorite as Favorite);
+  const flag2 = "mediaTitle" in (favorite as Favorite);
+  const flag3 = "mediaRate" in (favorite as Favorite);
+
+  return flag1 && flag2 && flag3;
 }

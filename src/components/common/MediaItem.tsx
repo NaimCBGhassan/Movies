@@ -11,14 +11,14 @@ import { MovieResult } from "../../types/movie";
 import { TvSerieResult } from "../../types/tv";
 import { TMDB } from "../../types/tmdb";
 import * as tmdbConfig from "../../utils/tmdb.config";
-import { isMovie, isTvSerie } from "../../utils/narrowingTypes";
+import { isFavorite, isMovie, isTvSerie } from "../../utils/narrowingTypes";
+import { Cast } from "../../types/person";
+import { Favorite as FavoriteType } from "../../types/favorite";
 
-type MediaType = Pick<TMDB, "mediaType">;
-interface Media {
-  media: MovieResult | TvSerieResult;
-}
-
-type Props = Media & MediaType;
+type Props = {
+  media: MovieResult | TvSerieResult | Cast | FavoriteType;
+  mediaType: TMDB["mediaType"];
+};
 
 const MediaItem = ({ media, mediaType }: Props) => {
   const { listFavorites } = useAppSelector((state) => state.user);
@@ -29,8 +29,6 @@ const MediaItem = ({ media, mediaType }: Props) => {
   const [rate, setRate] = useState<number | null>(null);
 
   useEffect(() => {
-    setPosterPath(tmdbConfig.posterPath(media.poster_path || media.backdrop_path));
-
     if (isMovie(media)) {
       setTitle(media.title);
       setReleaseDate(media.release_date && media.release_date.split("-")[0]);
@@ -39,8 +37,16 @@ const MediaItem = ({ media, mediaType }: Props) => {
       setTitle(media.name);
       setReleaseDate(media.first_air_date && media.first_air_date.split("-")[0]);
     }
+    if (isMovie(media) || isTvSerie(media)) {
+      setRate(media.vote_average);
+      setPosterPath(tmdbConfig.posterPath(media.poster_path || media.backdrop_path));
+    }
 
-    setRate(media.vote_average);
+    if (isFavorite(media)) {
+      setTitle(media.mediaTitle);
+      setRate(media.mediaRate);
+      setPosterPath(tmdbConfig.posterPath(media.mediaPoster));
+    }
   }, [media, mediaType]);
 
   return (
@@ -59,7 +65,7 @@ const MediaItem = ({ media, mediaType }: Props) => {
         {/* movie or tv item */}
         {mediaType !== "people" && (
           <>
-            {favoriteUtils.check({ listFavorites, mediaId: media.id }) && (
+            {favoriteUtils.check({ listFavorites, mediaId: +media.id.toString() }) && (
               <Favorite
                 color="primary"
                 sx={{
